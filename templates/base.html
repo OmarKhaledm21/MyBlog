@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous">
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+   
+    
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    
+    <title>{% block title %}{% endblock title %}</title>
+    {% block css_files %}{% endblock css_files %}
+</head>
+
+<body>
+    <div class="container-fluid main_color">
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg main_color">
+            <div class="container-fluid block_bar_color" >
+                <div class="col-9">
+                    <a class="navbar-brand" id="blog_main_font" href="{% url 'home' %}">Omar Khaled's Blog</a>
+                    <button class="navbar-toggler" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                </div>
+                <div class="col">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link {{
+                                    {% if current_page == "home" %}
+                                        active
+                                    {% endif %}
+                                }}" aria-current="page" href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{
+                                    {% if current_page == "stored_posts" %}
+                                        active
+                                    {% endif %}
+                                }}" href="{% url 'stored-posts' %}">Stored Posts</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link {{
+                                    {% if current_page == "all_posts" %}
+                                        active
+                                    {% endif %}
+
+                                }}" href="{% url 'all-posts' %}">All Posts</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        {% comment %} 
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> {% endcomment %}
+
+
+        
+        {% block body %}{% endblock body %}
+
+
+        <div class="footer_margin">
+            <br>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-white block_bar_color footer_margin">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Links -->
+                <section class="">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">
+                                Bio
+                            </h6>
+                            <p>
+                                Hello, I am Omar, I am a student at the Faculty of Computers and Artificial Intelligence in Cairo University.<br>
+                                I created this blog using Python Django and Bootstrap CSS for practice.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Other Projects</h6>
+                            <p>
+                                <a class="text-white">E-Commerce Website</a>
+                            </p>
+                            <p>
+                                <a class="text-white">T</a>
+                            </p>
+                            <p>
+                                <a class="text-white">T</a>
+                            </p>
+                            <p>
+                                <a class="text-white">T</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                            <p><i class="fa fa-home mr-4"></i> Cairo, Egypt</p>
+                            <p><i class="fa fa-envelope mr-4"></i> omarkhaledm21@gmail.com</p>
+                            <p><i class="fa fa-phone mr-4"></i> +20 1013665215</p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Follow me</h6>
+
+                            <!-- Linkedin -->
+                            <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="https://www.linkedin.com/in/omarkhaledm21/"
+                                role="button"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <!-- Github -->
+                            <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/OmarKhaledm21"
+                                role="button"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <!--CV-->
+                            <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://drive.google.com/file/d/1_8ALxjB290GBuU9Pj2X9sRTyiaBVRonG/view?usp=sharing"
+                                role="button"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                </section>
+                <!-- Section: Links -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                Created by Omar Khaled Mohy, Check this project <a href="">here</a> 
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+        
+        
+
+
+    </div>
+</body>
+
+</html>

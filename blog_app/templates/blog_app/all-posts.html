@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Posts
+{% endblock title %}
+
+
+{% block body %}
+<div class="row my-4 block_bar_color text-center">
+    <h3><i>All Posts Collection</i></h3>
+</div>
+<div class="row my-4">
+    {% for post in posts  %}
+        <div class="col-3">
+            <a href="{% url 'post-detail-page' post.slug %}" class="custom-card">    
+                <div class="card mb-3"> 
+                    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                    <div class="card-body">
+                       
+                            <h5 class="card-title">{{post.title}}</h5>
+                            <p class="card-text">{{post.excerpt}}</p>
+                            <p class="card-text"><small class="text-muted">Posted on {{post.date}}</small></p>    
+                      
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock body %}
+

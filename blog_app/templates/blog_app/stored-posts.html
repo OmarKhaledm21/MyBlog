@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stored Posts
+{% endblock title %}
+
+
+{% block body %}
+    <div class="row my-4">
+        
+        {% if not has_posts %}
+        <div class="row text-center">
+            
+        <h3>You didn't save any posts for later.</h3>
+        </div>
+    {% else %}
+            <ul>
+            {% for post in posts  %}
+                <div class="col-3">
+                    <a href="{% url 'post-detail-page' post.slug %}" class="custom-card">    
+                        <div class="card mb-3"> 
+                            <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                            <div class="card-body">
+                            
+                                    <h5 class="card-title">{{post.title}}</h5>
+                                    <p class="card-text">{{post.excerpt}}</p>
+                                    <p class="card-text"><small class="text-muted">Posted on {{post.date}}</small></p>    
+                            
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </ul>
+    {% endif %}
+    </div>
+    
+{% endblock body %}
+
+
